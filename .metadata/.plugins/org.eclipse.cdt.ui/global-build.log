@@ -1,0 +1,83 @@
+14:44:52 **** Incremental Build of configuration Debug for project SKadkhodayanFinal ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/motorDriver.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/motorDriver.d" -MT"Core/Src/motorDriver.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/motorDriver.o"
+arm-none-eabi-gcc -o "SKadkhodayanFinal.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\seank\OneDrive - UCB-O365\ECEN2370\ECEN2370FinalProject\SKadkhodayanFinal\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SKadkhodayanFinal.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SKadkhodayanFinal.elf
+ 
+arm-none-eabi-size  SKadkhodayanFinal.elf 
+arm-none-eabi-objdump -h -S SKadkhodayanFinal.elf  > "SKadkhodayanFinal.list"
+   text	   data	    bss	    dec	    hex	filename
+  12520	     12	   1716	  14248	   37a8	SKadkhodayanFinal.elf
+Finished building: default.size.stdout
+ 
+Finished building: SKadkhodayanFinal.list
+ 
+14:45:15 **** Incremental Build of configuration Debug for project SKadkhodayanFinal ****
+make -j16 all 
+arm-none-eabi-size  SKadkhodayanFinal.elf 
+   text	   data	    bss	    dec	    hex	filename
+  12520	     12	   1716	  14248	   37a8	SKadkhodayanFinal.elf
+Finished building: default.size.stdout
+ 
+14:54:35 **** Incremental Build of configuration Debug for project SKadkhodayanFinal ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+In file included from ../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h:140,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h:29,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:27,
+                 from ../Core/Inc/stm32f4xx_hal_conf.h:275,
+                 from ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:29,
+                 from ../Core/Inc/main.h:30,
+                 from ../Core/Src/main.c:20:
+../Core/Src/main.c: In function 'main':
+../Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f429xx.h:1193:29: warning: passing argument 1 of 'HAL_TIM_PWM_Start' from incompatible pointer type [-Wincompatible-pointer-types]
+ 1193 | #define TIM3                ((TIM_TypeDef *) TIM3_BASE)
+      |                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                             |
+      |                             TIM_TypeDef *
+../Core/Src/main.c:108:29: note: in expansion of macro 'TIM3'
+  108 |           HAL_TIM_PWM_Start(TIM3, TIM_CHANNEL_1);
+      |                             ^~~~
+In file included from ../Core/Inc/stm32f4xx_hal_conf.h:407:
+../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:1940:56: note: expected 'TIM_HandleTypeDef *' but argument is of type 'TIM_TypeDef *'
+ 1940 | HAL_StatusTypeDef HAL_TIM_PWM_Start(TIM_HandleTypeDef *htim, uint32_t Channel);
+      |                                     ~~~~~~~~~~~~~~~~~~~^~~~
+arm-none-eabi-gcc -o "SKadkhodayanFinal.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\seank\OneDrive - UCB-O365\ECEN2370\ECEN2370FinalProject\SKadkhodayanFinal\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SKadkhodayanFinal.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SKadkhodayanFinal.elf
+ 
+arm-none-eabi-size  SKadkhodayanFinal.elf 
+arm-none-eabi-objdump -h -S SKadkhodayanFinal.elf  > "SKadkhodayanFinal.list"
+   text	   data	    bss	    dec	    hex	filename
+  12520	     12	   1716	  14248	   37a8	SKadkhodayanFinal.elf
+Finished building: default.size.stdout
+ 
+Finished building: SKadkhodayanFinal.list
+ 
+15:01:05 **** Incremental Build of configuration Debug for project SKadkhodayanFinal ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SKadkhodayanFinal.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\seank\OneDrive - UCB-O365\ECEN2370\ECEN2370FinalProject\SKadkhodayanFinal\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SKadkhodayanFinal.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SKadkhodayanFinal.elf
+ 
+arm-none-eabi-size  SKadkhodayanFinal.elf 
+arm-none-eabi-objdump -h -S SKadkhodayanFinal.elf  > "SKadkhodayanFinal.list"
+   text	   data	    bss	    dec	    hex	filename
+  12512	     12	   1716	  14240	   37a0	SKadkhodayanFinal.elf
+Finished building: default.size.stdout
+ 
+Finished building: SKadkhodayanFinal.list
+ 
+15:02:17 **** Incremental Build of configuration Debug for project SKadkhodayanFinal ****
+make -j16 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "SKadkhodayanFinal.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\seank\OneDrive - UCB-O365\ECEN2370\ECEN2370FinalProject\SKadkhodayanFinal\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SKadkhodayanFinal.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SKadkhodayanFinal.elf
+ 
+arm-none-eabi-size  SKadkhodayanFinal.elf 
+arm-none-eabi-objdump -h -S SKadkhodayanFinal.elf  > "SKadkhodayanFinal.list"
+   text	   data	    bss	    dec	    hex	filename
+  12524	     12	   1716	  14252	   37ac	SKadkhodayanFinal.elf
+Finished building: default.size.stdout
+ 
+Finished building: SKadkhodayanFinal.list
+ 

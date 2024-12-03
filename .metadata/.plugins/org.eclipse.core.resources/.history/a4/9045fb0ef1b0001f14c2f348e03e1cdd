@@ -1,0 +1,14 @@
+/*
+ * motorDriver.h
+ *
+ *  Created on: Nov 30, 2024
+ *      Author: seank
+ */
+
+#ifndef INC_MOTORDRIVER_H_
+#define INC_MOTORDRIVER_H_
+
+void motor_ApplySpeeds(uint8_t speedLeft, uint8_t speedRight);
+
+
+#endif /* INC_MOTORDRIVER_H_ */
