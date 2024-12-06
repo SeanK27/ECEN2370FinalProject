@@ -1,5 +1,6 @@
 "./Core/Src/ApplicationCode.o"
 "./Core/Src/buttonDriver.o"
+"./Core/Src/joystickDriver.o"
 "./Core/Src/main.o"
 "./Core/Src/motorDriver.o"
 "./Core/Src/stm32f4xx_hal_msp.o"

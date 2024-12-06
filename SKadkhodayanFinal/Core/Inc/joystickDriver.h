@@ -8,11 +8,13 @@
 #ifndef INC_JOYSTICKDRIVER_H_
 #define INC_JOYSTICKDRIVER_H_
 
-typedef struct joyPosTypeDef {
+#include "stm32f4xx_hal.h"
+
+typedef struct {
 	uint8_t xPos;
 	uint8_t yPos;
-};
+} joyPosTypeDef;
 
-joyPosTypeDef joystick_getCoords();
+void joystick_getCoords(joyPosTypeDef joyPos, ADC_HandleTypeDef hadc1, ADC_HandleTypeDef hadc2);
 
 #endif /* INC_JOYSTICKDRIVER_H_ */

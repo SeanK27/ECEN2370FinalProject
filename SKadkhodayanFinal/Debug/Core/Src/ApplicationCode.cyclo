@@ -1,0 +1,3 @@
+../Core/Src/ApplicationCode.c:10:6:applySpeed	1
+../Core/Src/ApplicationCode.c:15:6:brakeAll	1
+../Core/Src/ApplicationCode.c:20:6:getJoy	1

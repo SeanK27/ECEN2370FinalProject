@@ -1,17 +1,24 @@
-15:02:17 **** Incremental Build of configuration Debug for project SKadkhodayanFinal ****
+23:27:15 **** Incremental Build of configuration Debug for project SKadkhodayanFinal ****
 make -j16 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F429xx -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+../Core/Src/main.c: In function 'main':
+../Core/Src/main.c:104:12: warning: variable 'ADC_CH13' set but not used [-Wunused-but-set-variable]
+  104 |   uint32_t ADC_CH13 = 0;
+      |            ^~~~~~~~
+../Core/Src/main.c:103:12: warning: variable 'ADC_CH5' set but not used [-Wunused-but-set-variable]
+  103 |   uint32_t ADC_CH5 = 0;
+      |            ^~~~~~~
 arm-none-eabi-gcc -o "SKadkhodayanFinal.elf" @"objects.list"   -mcpu=cortex-m4 -T"C:\Users\seank\OneDrive - UCB-O365\ECEN2370\ECEN2370FinalProject\SKadkhodayanFinal\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SKadkhodayanFinal.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 Finished building target: SKadkhodayanFinal.elf
  
 arm-none-eabi-size  SKadkhodayanFinal.elf 
 arm-none-eabi-objdump -h -S SKadkhodayanFinal.elf  > "SKadkhodayanFinal.list"
    text	   data	    bss	    dec	    hex	filename
-  12524	     12	   1716	  14252	   37ac	SKadkhodayanFinal.elf
+  13716	     12	   1788	  15516	   3c9c	SKadkhodayanFinal.elf
 Finished building: default.size.stdout
  
 Finished building: SKadkhodayanFinal.list
  
 
-15:02:18 Build Finished. 0 errors, 0 warnings. (took 1s.145ms)
+23:27:15 Build Finished. 0 errors, 2 warnings. (took 653ms)
 
