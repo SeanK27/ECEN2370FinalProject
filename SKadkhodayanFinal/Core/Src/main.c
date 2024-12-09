@@ -156,9 +156,9 @@ int main(void)
 
   ApplicationInit();
 
-  LCD_Visual_Demo();
+  //LCD_Visual_Demo();
 
-  HAL_Delay(5000);
+  HAL_Delay(1000);
 
   /* USER CODE END 2 */
 
@@ -170,11 +170,13 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-	  //joystick_getCoords(&joyPos, hadc1, hadc2);
+	  joystick_getCoords(&joyPos, hadc1, hadc2);
 
-	  //motor_CalculatePower(joyPos.xPos, joyPos.yPos, &motorPow);
+	  motor_CalculatePower(joyPos.xPos, joyPos.yPos, &motorPow);
 
-	  //motor_ApplyPower(motorPow.leftPow, motorPow.rightPow);
+	  motor_ApplyPower(motorPow.leftPow, motorPow.rightPow);
+
+	  displayCurrentMove(joyPos);
 
   }
   /* USER CODE END 3 */

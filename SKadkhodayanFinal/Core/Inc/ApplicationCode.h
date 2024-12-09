@@ -9,6 +9,7 @@
 #include "stm32f4xx_hal.h"
 #include "motorDriver.h"
 #include "joystickDriver.h"
+#include "diagnosticsScreen.h"
 
 #include <stdio.h>
 
