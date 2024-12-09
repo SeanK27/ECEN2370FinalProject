@@ -13,11 +13,11 @@
 #include "stm32f4xx_hal.h"
 
 typedef struct {
-	uint8_t leftPow;
-	uint8_t rightPow;
+	uint16_t leftPow;
+	uint16_t rightPow;
 } motorPowTypeDef;
 
-uint16_t mapp(uint16_t x, uint16_t in_min, uint16_t in_max, uint16_t out_min, uint16_t out_max);
+uint32_t mapp(uint32_t x, uint32_t in_min, uint32_t in_max, uint32_t out_min, uint32_t out_max);
 
 void motor_CalculatePower(uint16_t xPos, uint16_t yPos, motorPowTypeDef * motorPow);
 

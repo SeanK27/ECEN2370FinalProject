@@ -22,6 +22,8 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
+#include "ApplicationCode.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -114,11 +116,13 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-	  getJoy(joyPos, hadc1, hadc2);
+	  //getJoy(joyPos, hadc1, hadc2);
 
-	  calculatePower(joyPos.xPos, joyPos.yPos, motorPow);
+	  joystick_getCoords(&joyPos, hadc1, hadc2);
 
-	  applySpeed(motorPow.leftPow, motorPow.rightPow);
+	  motor_CalculatePower(joyPos.xPos, joyPos.yPos, &motorPow);
+
+	  motor_ApplyPower(motorPow.leftPow, motorPow.rightPow);
 
   }
   /* USER CODE END 3 */

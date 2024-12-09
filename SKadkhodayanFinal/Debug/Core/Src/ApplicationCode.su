@@ -1,3 +1,5 @@
-../Core/Src/ApplicationCode.c:10:6:applySpeed	16	static
+../Core/Src/ApplicationCode.c:10:6:applyPower	16	static
 ../Core/Src/ApplicationCode.c:15:6:brakeAll	8	static
-../Core/Src/ApplicationCode.c:20:6:getJoy	160	static
+../Core/Src/ApplicationCode.c:20:6:getJoy	168	static
+../Core/Src/ApplicationCode.c:25:6:noPower	8	static
+../Core/Src/ApplicationCode.c:30:6:calculatePower	16	static

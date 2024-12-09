@@ -19,7 +19,7 @@ void brakeAll() {
 
 void getJoy(joyPosTypeDef joyPos, ADC_HandleTypeDef hadc1, ADC_HandleTypeDef hadc2) {
 
-	joystick_getCoords(joyPos, &hadc1, &hadc2);
+	joystick_getCoords(&joyPos, hadc1, hadc2);
 }
 
 void noPower() {
@@ -27,7 +27,7 @@ void noPower() {
 	motor_noPower();
 }
 
-void calculatePower(uint16_t xPos, uint16_t yPos, motorPowTypeDef motorPow) {
+void calculatePower(uint16_t xPos, uint16_t yPos, motorPowTypeDef * motorPow) {
 
-	motor_CalculatePower(xPos, yPos, &motorPow);
+	motor_CalculatePower(xPos, yPos, motorPow);
 }

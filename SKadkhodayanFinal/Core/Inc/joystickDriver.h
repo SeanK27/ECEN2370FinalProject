@@ -11,10 +11,10 @@
 #include "stm32f4xx_hal.h"
 
 typedef struct {
-	uint8_t xPos;
-	uint8_t yPos;
+	uint32_t xPos;
+	uint32_t yPos;
 } joyPosTypeDef;
 
-void joystick_getCoords(joyPosTypeDef joyPos, ADC_HandleTypeDef hadc1, ADC_HandleTypeDef hadc2);
+void joystick_getCoords(joyPosTypeDef * joyPos, ADC_HandleTypeDef hadc1, ADC_HandleTypeDef hadc2);
 
 #endif /* INC_JOYSTICKDRIVER_H_ */

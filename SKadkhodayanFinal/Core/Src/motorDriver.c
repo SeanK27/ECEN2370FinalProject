@@ -10,25 +10,29 @@
 // Parameter that affects turning sensitivity
 #define TURNFACTOR 1
 
-uint16_t mapp(uint16_t x, uint16_t in_min, uint16_t in_max, uint16_t out_min, uint16_t out_max) {
+uint32_t mapp(uint32_t x, uint32_t in_min, uint32_t in_max, uint32_t out_min, uint32_t out_max) {
 	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
 void motor_CalculatePower(uint16_t xPos, uint16_t yPos, motorPowTypeDef * motorPow) {
 
-	uint16_t base = mapp(xPos, 512, 1024, 0, 100);
+	uint16_t base = (uint16_t) mapp(xPos, 512, 1024, 0, 100);
 
 	// Adjustment value that is applied to both motors
-	uint16_t adjust = (mapp(512 - yPos, 0, 1024, 0, 100)) * TURNFACTOR;
+	int16_t adjust = (int16_t) (mapp(512 - yPos, 0, 1024, 0, 100)) * TURNFACTOR;
 
 	// Apply adjustment
-	uint16_t rightMotor = base - adjust;
-	uint16_t leftMotor = base + adjust;
+	int16_t rightMotor = base - adjust;
+	int16_t leftMotor = base + adjust;
 
 	// When joystick is fully back, send HIGH signal to brakePinLeft then set power to 0.
-	if (rightMotor < -240 && leftMotor < -240) {
+	if ((rightMotor < 0 && leftMotor < 0) || (xPos <= 515 && yPos <= 515)) {
 	    rightMotor = 0;
 	    leftMotor = 0;
+
+	    // Store motor power
+	    motorPow->leftPow = leftMotor;
+	    motorPow->rightPow = rightMotor;
 	}
 
 	else {
@@ -42,12 +46,12 @@ void motor_CalculatePower(uint16_t xPos, uint16_t yPos, motorPowTypeDef * motorP
 			leftMotor = 0;
 		}
 
-		if (rightMotor > 255) {
-			rightMotor = 255;
+		if (rightMotor > 100) {
+			rightMotor = 100;
 		}
 
-		if (leftMotor > 255) {
-			leftMotor = 255;
+		if (leftMotor > 100) {
+			leftMotor = 100;
 		}
 		//////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
