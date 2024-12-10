@@ -9,6 +9,7 @@
 
 /* Static variables */
 
+static uint8_t screenNum = 0;
 
 extern void initialise_monitor_handles(void);
 
@@ -19,6 +20,11 @@ static EXTI_HandleTypeDef LCDTouchIRQ;
 void LCDTouchScreenInterruptGPIOInit(void);
 #endif // TOUCH_INTERRUPT_ENABLED
 #endif // COMPILE_TOUCH_FUNCTIONS
+
+uint8_t getScreenNum() {
+
+	return screenNum;
+}
 
 void ApplicationInit(void)
 {
@@ -47,6 +53,19 @@ void LCD_Visual_Demo(void)
 }
 
 #if COMPILE_TOUCH_FUNCTIONS == 1
+
+void switchScreens(uint8_t * screenNum) {
+
+	if (returnTouchStateAndLocation(&StaticTouchData) == STMPE811_State_Pressed) {
+		if (*screenNum == 0) {
+			*screenNum = 1;
+		}
+		if (*screenNum == 1) {
+			*screenNum = 0;
+		}
+	}
+}
+
 void LCD_Touch_Polling_Demo(void)
 {
 	LCD_Clear(0,LCD_COLOR_GREEN);
@@ -122,18 +141,20 @@ void EXTI15_10_IRQHandler()
 	// Determine if it is pressed or unpressed
 	if(isTouchDetected) // Touch has been detected
 	{
-		printf("\nPressed");
+		//printf("\nPressed");
 		// May need to do numerous retries?
-		DetermineTouchPosition(&StaticTouchData);
+		//DetermineTouchPosition(&StaticTouchData);
 		/* Touch valid */
-		printf("\nX: %03d\nY: %03d \n", StaticTouchData.x, StaticTouchData.y);
-		LCD_Clear(0, LCD_COLOR_RED);
+		//printf("\nX: %03d\nY: %03d \n", StaticTouchData.x, StaticTouchData.y);
+		//LCD_Clear(0, LCD_COLOR_RED);
+
+		screenNum = !screenNum;
 
 	}else{
 
 		/* Touch not pressed */
-		printf("\nNot pressed \n");
-		LCD_Clear(0, LCD_COLOR_GREEN);
+		//printf("\nNot pressed \n");
+		//LCD_Clear(0, LCD_COLOR_GREEN);
 	}
 
 	STMPE811_Write(STMPE811_FIFO_STA, 0x01);

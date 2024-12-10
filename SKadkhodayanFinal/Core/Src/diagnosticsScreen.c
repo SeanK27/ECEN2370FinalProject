@@ -6,11 +6,13 @@
  */
 
 #include "diagnosticsScreen.h"
+#include "stdio.h"
 
 void displayMovementBase() {
 	LCD_Clear(0,LCD_COLOR_WHITE);
-	LCD_Draw_Circle_Fill(120, 80, 50, LCD_COLOR_BLACK);
-	LCD_Draw_Circle_Fill(120, 80, 47, LCD_COLOR_WHITE);
+	//LCD_Draw_Circle_Fill(120, 80, 50, LCD_COLOR_BLACK);
+	//LCD_Draw_Circle_Fill(120, 80, 47, LCD_COLOR_WHITE);
+	LCD_Draw_Circle_NoFill(120, 80, 50, 3, LCD_COLOR_BLACK);
 	LCD_Draw_Horizontal_Line(0, 155, 240, LCD_COLOR_BLACK);
 }
 
@@ -55,6 +57,7 @@ void displayCurrentMove(joyPosTypeDef joyPos) {
 	uint32_t dispJoyPosY = mapp(joyPos.xPos, 0, 1024, 80+47-20, 80-47+20);
 
 	uint32_t dispJoyPosX = mapp(joyPos.yPos, 0, 1024, 120-47+20, 120+47-20);
+
 
 	LCD_Draw_Circle_Fill(120, 80, 47, LCD_COLOR_WHITE);
 	LCD_Draw_Circle_Fill(dispJoyPosX, dispJoyPosY, 20, LCD_COLOR_BLACK);
@@ -108,8 +111,26 @@ void displayMoveLog(uint16_t moveLog) {
 	}
 }
 
+void displayRunTime(uint32_t * runtime_min, uint32_t * runtime_sec) {
 
+	*runtime_min = uwTick/60000;
 
+	*runtime_sec = (uwTick % 60000) / 1000;
+
+	// Convert minutes and seconds to strings
+	char minStr[3];
+	char secStr[3];
+
+	// Convert to strings with two digits
+	sprintf(minStr, "%02d", (int) *runtime_min);
+	sprintf(secStr, "%02d", (int) *runtime_sec);
+
+	LCD_DisplayChar(90, 120, minStr[0]);
+	LCD_DisplayChar(105, 120, minStr[1]);
+	LCD_DisplayChar(115, 118, ':');
+	LCD_DisplayChar(125, 120, secStr[0]);
+	LCD_DisplayChar(140, 120, secStr[1]);
+}
 
 
 

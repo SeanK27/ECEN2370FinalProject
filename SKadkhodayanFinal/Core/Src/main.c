@@ -152,15 +152,22 @@ int main(void)
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3);		// Right
 
   joyPosTypeDef joyPos = {0};
+  joyPosTypeDef tempJoyPos = {0};
   motorPowTypeDef motorPow = {0};
 
   uint16_t moveLog = 0;
+  uint16_t tempMoveLog = 0;
+
+  uint32_t runtime_min = 0;
+  uint32_t runtime_sec = 0;
 
   ApplicationInit();
 
   //LCD_Visual_Demo();
 
   HAL_Delay(1000);
+
+  //LCD_Touch_Polling_Demo();
 
   /* USER CODE END 2 */
 
@@ -172,19 +179,50 @@ int main(void)
 
     /* USER CODE BEGIN 3 */
 
-	  joystick_getCoords(&joyPos, hadc1, hadc2);
+	  while (getScreenNum() == 0) {
 
-	  motor_CalculatePower(joyPos.xPos, joyPos.yPos, &motorPow);
+		  joystick_getCoords(&joyPos, hadc1, hadc2);
 
-	  motor_ApplyPower(motorPow.leftPow, motorPow.rightPow);
+		  motor_CalculatePower(joyPos.xPos, joyPos.yPos, &motorPow);
 
-	  populateMoves(motorPow.leftPow, motorPow.rightPow, &moveLog);
+		  motor_ApplyPower(motorPow.leftPow, motorPow.rightPow);
 
-	  displayMovementBase();
+		  populateMoves(motorPow.leftPow, motorPow.rightPow, &moveLog);
 
-	  displayMoveLog(moveLog);
+//		  if ((tempJoyPos.xPos != joyPos.xPos) || (tempJoyPos.yPos != joyPos.yPos)) {
+//			  displayMovementBase();
+//
+//			  displayCurrentMove(joyPos);
+//
+//			  displayMoveLog(moveLog);
+//		  }
+//		  if (tempMoveLog != moveLog) {
+//			  displayMovementBase();
+//
+//			  displayCurrentMove(joyPos);
+//
+//			  displayMoveLog(moveLog);
+//		  }
 
-	  displayCurrentMove(joyPos);
+		  displayMovementBase();
+
+		  displayCurrentMove(joyPos);
+
+		  displayMoveLog(moveLog);
+
+
+		  tempJoyPos = joyPos;
+		  tempMoveLog = moveLog;
+
+	  }
+
+	  while (getScreenNum() == 1) {
+		  LCD_Clear(0,LCD_COLOR_GREEN);
+
+		  displayRunTime(&runtime_min, &runtime_sec);
+
+		  populateMoves(motorPow.leftPow, motorPow.rightPow, &moveLog);
+	  }
 
   }
   /* USER CODE END 3 */

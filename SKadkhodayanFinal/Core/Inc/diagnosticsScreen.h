@@ -18,6 +18,6 @@ void displayCurrentMove(joyPosTypeDef joyPos);
 
 void displayMoveLog(uint16_t moveLog);
 
-void displayRunTime();
+void displayRunTime(uint32_t * runtime_min, uint32_t * runtime_sec);
 
 #endif /* INC_DIAGNOSTICSSCREEN_H_ */

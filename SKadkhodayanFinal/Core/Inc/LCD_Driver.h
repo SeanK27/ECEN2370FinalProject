@@ -64,6 +64,7 @@ void LCD_SetFont(FONT_t *fonts);
 
 // Draw Circle Filled
 void LCD_Draw_Circle_Fill(uint16_t Xpos, uint16_t Ypos, uint16_t radius, uint16_t color);
+void LCD_Draw_Circle_NoFill(uint16_t Xpos, uint16_t Ypos, uint16_t radius, uint16_t thickness, uint16_t color);
 
 // Draw Vertical Line
 void LCD_Draw_Vertical_Line(uint16_t x, uint16_t y, uint16_t len, uint16_t color);

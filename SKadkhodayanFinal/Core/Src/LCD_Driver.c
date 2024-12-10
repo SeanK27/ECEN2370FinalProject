@@ -228,6 +228,28 @@ void LCD_Draw_Circle_Fill(uint16_t Xpos, uint16_t Ypos, uint16_t radius, uint16_
     }
 }
 
+void LCD_Draw_Circle_NoFill(uint16_t Xpos, uint16_t Ypos, uint16_t radius, uint16_t thickness, uint16_t color) {
+    // Ensure that the thickness doesn't exceed the radius
+    if (thickness >= radius) return;
+
+    // Draw the ring-like circle with specified thickness
+    for (int16_t y = -radius; y <= radius; y++) {
+
+        for (int16_t x = -radius; x <= radius; x++) {
+
+            // Calculate distance squared from the center
+            int16_t distanceSquared = x * x + y * y;
+
+            // Draw pixels in the ring area: between (radius-thickness)^2 and radius^2
+            if (distanceSquared >= (radius - thickness) * (radius - thickness) && distanceSquared <= radius * radius) {
+
+                LCD_Draw_Pixel(x + Xpos, y + Ypos, color);
+            }
+        }
+    }
+}
+
+
 void LCD_Draw_Vertical_Line(uint16_t x, uint16_t y, uint16_t len, uint16_t color)
 {
   for (uint16_t i = 0; i < len; i++)
