@@ -154,6 +154,8 @@ int main(void)
   joyPosTypeDef joyPos = {0};
   motorPowTypeDef motorPow = {0};
 
+  uint16_t moveLog = 0;
+
   ApplicationInit();
 
   //LCD_Visual_Demo();
@@ -175,6 +177,12 @@ int main(void)
 	  motor_CalculatePower(joyPos.xPos, joyPos.yPos, &motorPow);
 
 	  motor_ApplyPower(motorPow.leftPow, motorPow.rightPow);
+
+	  populateMoves(motorPow.leftPow, motorPow.rightPow, &moveLog);
+
+	  displayMovementBase();
+
+	  displayMoveLog(moveLog);
 
 	  displayCurrentMove(joyPos);
 

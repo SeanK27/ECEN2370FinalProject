@@ -6,9 +6,7 @@
  */
 
 #include "motorDriver.h"
-
-// Parameter that affects turning sensitivity
-#define TURNFACTOR 1
+#include "stdlib.h"
 
 uint32_t mapp(uint32_t x, uint32_t in_min, uint32_t in_max, uint32_t out_min, uint32_t out_max) {
 	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
@@ -81,3 +79,75 @@ void motor_noPower() {
 	TIM3->CCR1 = 0;
 	TIM3->CCR3 = 0;
 }
+
+void populateMoves(uint16_t powerLeft, uint16_t powerRight, uint16_t * moveLog) {
+
+	// BWD
+	if (powerLeft < 5 && powerRight < 5) {
+
+		// Check if move is already displayed
+		if ((*moveLog & 0xF) != BACKWARD) {
+
+			*moveLog = (*moveLog << 4) | BACKWARD;
+		}
+	}
+
+	else {
+
+		// LFT
+		if (powerLeft < powerRight) {
+
+			// FWD
+			if (powerRight - powerLeft < 15) {
+
+				// Check if move is already displayed
+				if ((*moveLog & 0xF) != FORWARD) {
+
+				*moveLog = (*moveLog << 4) | FORWARD;
+				}
+			}
+
+			// LFT
+			else {
+
+				// Check if move is already displayed
+				if ((*moveLog & 0xF) != LEFT) {
+
+					*moveLog = (*moveLog << 4) | LEFT;
+				}
+			}
+		}
+
+		// RIT
+		else {
+
+			// FWD
+			if (powerLeft - powerRight < 15) {
+
+				// Check if move is already displayed
+				if ((*moveLog & 0xF) != FORWARD) {
+
+					*moveLog = (*moveLog << 4) | FORWARD;
+				}
+			}
+
+			// RIT
+			else {
+
+				// Check if move is already displayed
+				if ((*moveLog & 0xF) != RIGHT) {
+
+					*moveLog = (*moveLog << 4) | RIGHT;
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+

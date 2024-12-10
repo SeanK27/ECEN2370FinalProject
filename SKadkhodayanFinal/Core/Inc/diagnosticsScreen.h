@@ -10,6 +10,7 @@
 
 #include "LCD_Driver.h"
 #include "joystickDriver.h"
+#include "motorDriver.h"
 
 void displayMovementBase();
 
