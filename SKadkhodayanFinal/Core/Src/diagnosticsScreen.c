@@ -12,8 +12,17 @@ void displayMovementBase() {
 	LCD_Clear(0,LCD_COLOR_WHITE);
 	//LCD_Draw_Circle_Fill(120, 80, 50, LCD_COLOR_BLACK);
 	//LCD_Draw_Circle_Fill(120, 80, 47, LCD_COLOR_WHITE);
-	LCD_Draw_Circle_NoFill(120, 80, 50, 3, LCD_COLOR_BLACK);
+	LCD_Draw_Circle_NoFill(120, 95, 50, 3, LCD_COLOR_BLACK);
 	LCD_Draw_Horizontal_Line(0, 155, 240, LCD_COLOR_BLACK);
+
+//	LCD_DisplayChar(80, 50, 'J');
+//	LCD_DisplayChar(95, 50, 'o');
+//	LCD_DisplayChar(110, 50, 'y');
+//	LCD_DisplayChar(123, 50, 's');
+//	LCD_DisplayChar(130, 50, 't');
+//	LCD_DisplayChar(142, 50, 'i');
+//	LCD_DisplayChar(158, 50, 'c');
+//	LCD_DisplayChar(168, 50, 'k');
 }
 
 void displayCurrentMove(joyPosTypeDef joyPos) {
@@ -54,12 +63,12 @@ void displayCurrentMove(joyPosTypeDef joyPos) {
 	}
 	*/
 
-	uint32_t dispJoyPosY = mapp(joyPos.xPos, 0, 1024, 80+47-20, 80-47+20);
+	uint32_t dispJoyPosY = mapp(joyPos.xPos, 0, 1024, 95+47-20, 95-47+20);
 
 	uint32_t dispJoyPosX = mapp(joyPos.yPos, 0, 1024, 120-47+20, 120+47-20);
 
 
-	LCD_Draw_Circle_Fill(120, 80, 47, LCD_COLOR_WHITE);
+	LCD_Draw_Circle_Fill(120, 95, 47, LCD_COLOR_WHITE);
 	LCD_Draw_Circle_Fill(dispJoyPosX, dispJoyPosY, 20, LCD_COLOR_BLACK);
 }
 
@@ -125,11 +134,20 @@ void displayRunTime(uint32_t * runtime_min, uint32_t * runtime_sec) {
 	sprintf(minStr, "%02d", (int) *runtime_min);
 	sprintf(secStr, "%02d", (int) *runtime_sec);
 
-	LCD_DisplayChar(90, 120, minStr[0]);
-	LCD_DisplayChar(105, 120, minStr[1]);
-	LCD_DisplayChar(115, 118, ':');
-	LCD_DisplayChar(125, 120, secStr[0]);
-	LCD_DisplayChar(140, 120, secStr[1]);
+	LCD_DisplayChar(80, 100, 'R');
+	LCD_DisplayChar(95, 100, 'u');
+	LCD_DisplayChar(110, 100, 'n');
+	LCD_DisplayChar(123, 100, 't');
+	LCD_DisplayChar(130, 100, 'i');
+	LCD_DisplayChar(142, 100, 'm');
+	LCD_DisplayChar(158, 100, 'e');
+	LCD_DisplayChar(168, 98, ':');
+
+	LCD_DisplayChar(90, 140, minStr[0]);
+	LCD_DisplayChar(105, 140, minStr[1]);
+	LCD_DisplayChar(115, 138, ':');
+	LCD_DisplayChar(125, 140, secStr[0]);
+	LCD_DisplayChar(140, 140, secStr[1]);
 }
 
 

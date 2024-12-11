@@ -152,11 +152,9 @@ int main(void)
   HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_3);		// Right
 
   joyPosTypeDef joyPos = {0};
-  joyPosTypeDef tempJoyPos = {0};
   motorPowTypeDef motorPow = {0};
 
   uint16_t moveLog = 0;
-  uint16_t tempMoveLog = 0;
 
   uint32_t runtime_min = 0;
   uint32_t runtime_sec = 0;
@@ -209,10 +207,6 @@ int main(void)
 		  displayCurrentMove(joyPos);
 
 		  displayMoveLog(moveLog);
-
-
-		  tempJoyPos = joyPos;
-		  tempMoveLog = moveLog;
 
 	  }
 
